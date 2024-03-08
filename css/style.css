@@ -211,7 +211,7 @@ a{
 
     .nav-right.show-menu {
         display: flex;
-        max-height: 500px; /* Sesuaikan kebutuhan */
+        max-height: 500px;
     }
 
     .nav-right .nav-item {
