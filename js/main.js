@@ -1,6 +1,6 @@
- const mntoggle = document.querySelector('.menu-toggle input');
- const nav = document.querySelector('nav ul');
+const toggle = document.getElementById('toggle');
+const navRight = document.querySelector('.nav-right');
 
-mntoggle.addEventListener('click',function(){
-    nav.classList.toggle('menushow');
-})
+toggle.addEventListener('change', () => {
+    navRight.classList.toggle('show-menu', toggle.checked);
+});

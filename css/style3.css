@@ -72,7 +72,7 @@ hr{
     padding: 20px;
     margin: auto;
 }
-ul{
+.ulimg{
     list-style: none;
     padding: 0;
     margin: 0;
@@ -80,8 +80,10 @@ ul{
     justify-content: space-around;
     flex-wrap: wrap;
 }
-li{
+.limg{
     margin: 10px;
+    transform: translateX(40px);
+    animation: fadeInUp 1s forwards;
 }
 img{
     width: 250px;

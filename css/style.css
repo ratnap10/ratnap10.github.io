@@ -1,9 +1,14 @@
 /*
 #231942 #5E548E #9F86C0 #BE95C4 #E0B1CB (gelap ke terang)
 */
+
 *{
     margin: 0;
     padding: 0;
+}
+
+body{
+    overflow-x: hidden;
 }
 
 nav{
@@ -11,19 +16,24 @@ nav{
     background-color: #231942;
     color: #E0B1CB;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 10px 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 .nav-left{
     display: flex;
     justify-content: flex-start;
-    padding-left: 1.5em;
+    flex-wrap: wrap;
+    flex-direction: row;
     transform: translateX(40px);
     animation: fadeSide 1s forwards;
 }
 .logo{
-    width: 60px;
+    display: flex;
+    width: 3.4em;
+    height: fit-content;
 }
 h3{
     padding-left: 0.5em;
@@ -32,9 +42,11 @@ h3{
 .nav-right{
     display: flex;
     justify-content: flex-end;
-    padding-right: 3em;
+    margin-left: auto;
+    padding-right: 10px;
     transform: translateX(50px);
     animation: fadeSide 1s forwards;
+    z-index: 2;
 }
 .nav-right .nav-item{
     text-decoration: none;
@@ -48,38 +60,39 @@ h3{
 
 .container{
     background: linear-gradient(#BE95C4, #E0B1CB);
+    position: relative;
+    z-index: 1;
 }
 main{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    z-index: 1;
 }
 .box{
     margin: 5px;
     padding: 1em;
 }
 .img-welcome{
-    width: 240px;
-    padding-left: 0.5em;
+    width: 25vw;
+    display: flex;
     border-radius: 1em;
-    display: block;
-    margin: 0;
     transform: translateX(40px);
     animation: fadeSide 1s forwards;
 }
 h1, .sub{
+    display: flex;
     text-align: center;
+    justify-content: center;
     color: #231942;
     transform: translateY(50px);
     animation: fadeInUp 1s forwards;
 }
 h1{
-    padding-right: 0.5em;
-    font-size: 75px;
+    font-size: 5vw;
     font-family: Lexend;
-}
-.sub{
-    padding-right: 2.5em;
 }
 hr{
     margin-left: 15px;
@@ -137,16 +150,74 @@ a{
     }
 }
 
-/*
-.blob-img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    background-color: rgb(255, 208, 0);
-    border-radius: 50%;
-    z-index: -1;
+#toggle {
+    display: none;
 }
-*/
+
+/*hambaga*/
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .menu-toggle label {
+        display: block;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background-color: #E0B1CB;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background 0.3s ease-in-out;
+    }
+
+    #toggle:checked + .menu-toggle span:nth-child(1),
+    #toggle:checked + .menu-toggle span:nth-child(3) {
+        background-color: #E0B1CB;
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    #toggle:checked + .menu-toggle span:nth-child(2) {
+        background-color: transparent;
+        transform: rotate(90deg);
+    }
+
+    .nav-right {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #231942;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        overflow: hidden;
+        max-height: 0;
+        flex-direction: column;
+        transition: max-height 0.3s ease-in-out;
+        z-index: 3;
+    }
+
+    .nav-right.show-menu {
+        display: flex;
+        max-height: 500px; /* Sesuaikan kebutuhan */
+    }
+
+    .nav-right .nav-item {
+        text-align: justify;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+}
