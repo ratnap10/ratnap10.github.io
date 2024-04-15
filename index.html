@@ -7,6 +7,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <title>022 | Ratna Puspitasari</title>
+
+        <link rel="stylesheet" href="scraping.htaccess">
+        <link rel="stylesheet" href="js/main.js">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </head>
     <body>
         <header>
@@ -43,6 +47,46 @@
             <hr>
             <div class="content">
                 <center><p class="isi">Web ini merupakan hasil dari dedikasi dalam menyelesaikan tugas Proyek 1: Pengembangan Perangkat Lunak Desktop. Dalam proses pengerjaannya, saya tidak hanya mengandalkan sumber-sumber yang disediakan oleh platform pembelajaran, tetapi juga merambah ke sumber-sumber lain yang relevan. Beberapa di antaranya berasal dari Pinterest, sebuah platform berbagi ide dan inspirasi yang memberikan kontribusi berharga dalam memperkaya konten proyek ini. Selain itu, gambar-gambar yang digunakan juga merupakan hasil karya saya sendiri, menunjukkan kreativitas dan kemampuan menggambar yang saya aplikasikan dalam pengembangan web ini. Dengan menggunakan beragam sumber dan kemampuan pribadi, web ini berhasil dibentuk sebagai wujud kerja keras dan komitmen untuk mencapai tujuan proyek. Terima kasih atas kesempatan ini!</p></center>
+            </div>
+
+            <hr>
+            <div id="scrap" class="news">
+                <center>
+                    <h2>Data Scraping</h2>
+                    <div id="tbl" class="tbel">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Judul</th>
+                                    <th>Kategori</th>
+                                    <th>Waktu Publikasi</th>
+                                    <th>Waktu Pengambilan</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </center>
+
+                    <script type="text/javascript">
+                        $(function(){
+                            $.get('http://localhost:8000/Repu.json', function(data){
+                                var str = "<table>";
+                                str += "<tr><th>No</th><th>Judul</th><th>Kategori</th><th>Waktu Publikasi</th><th>Waktu Pengambilan</th></tr>";
+
+                                $.each(data, function(x, isidt){
+                                    str += "<tr><td>" + (x+1) + "</td>";
+                                    str += "<td>" + isidt.judul + "</td>";
+                                    str += "<td>" + isidt.kategori + "</td>";
+                                    str += "<td>" + isidt.waktu_publish + "</td>";
+                                    str += "<td>" + isidt.waktu_pengambilan + "</td></tr>";
+                                });
+                                str += "</table>";
+
+                                $('#tbl').html(str);
+                            });
+                        });
+                    </script>
             </div>
         </div>
         <footer>

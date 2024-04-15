@@ -112,6 +112,23 @@ hr{
     transform: translateY(50px);
     animation: fadeInUp 1s forwards;
 }
+/*.news{
+    padding-top: 1em;
+    font-family: Lexend;
+}
+.tbel{
+    padding-top: 1em;
+}
+table{
+    border-collapse: collapse;
+}
+th{
+    background-color: #231942;
+    color: white;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}*/
 
 footer{
     background-color: #231942;
